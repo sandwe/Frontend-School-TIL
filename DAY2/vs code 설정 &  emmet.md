@@ -1,3 +1,9 @@
+# VS Code 설정 & Emmet
+
+> 22.08.30
+
+<br>
+
 ## Visual Studio Code 설정
 
 - 코드 스니펫 설정 후 적용: `htmlko + tab`
