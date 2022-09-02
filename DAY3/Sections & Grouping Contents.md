@@ -22,8 +22,8 @@
 
 ## Semantic Tag
 
-- 웹에 존재하는 많은 문서들의 HTML의 구조 파악에 도움을 주고자 HTML5에 등장했다.<br>
-  <img src="../img/DAY3_01.png" width="450px"  title="DAY3_01" alt="meta 태그"></img>
+- 웹에 존재하는 많은 문서들의 HTML의 구조 파악에 도움을 주고자 HTML5에 등장했다.  
+  <img src="../img/DAY3/DAY3_01.png" width="450px"  title="DAY3_01" alt="meta 태그"></img>
 - 위의 HTML5에 나온 시멘틱 태그들이 몇몇 브라우저에서 적용되지 않기 때문에 회의 시 크로스 브라우징을 할 범위를 정해 대응을 한다.<br>
   [Can I use... Support tables for HTML5, CSS3, etc](https://caniuse.com/)
 

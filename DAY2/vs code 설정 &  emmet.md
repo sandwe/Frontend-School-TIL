@@ -81,5 +81,5 @@ table>(thead>tr>th{제목}*5)+(tbody>tr*10>td{내용}*5)+tfoot>td*6
   앞에만 기호를 쓰는것 (ex. 깃허브 리드미, 노션..)
   ```
 
-- meta 태그로 **문서의 정보**를 나타낼 수 있다.
-  <img src="../img/DAY2_01.png" width="450px"  title="DAY2_01" alt="meta 태그"></img><br/>
+- meta 태그로 **문서의 정보**를 나타낼 수 있다.  
+  <img src="../img/DAY2/DAY2_01.png" width="450px"  title="DAY2_01" alt="meta 태그"></img><br/>

@@ -147,4 +147,4 @@ p {
 - `float`: 컨테이너가 일반 흐름에서 빠져나와 둥둥 떠다니며 좌우 정렬이 가능함.
 - `overflow: hidden`: float가 적용된 자식 요소를 다 묶어주고, 그 다음에 오는 요소들이 float에 영향을 받지 않게 해준다.
 
-<img src="../img/DAY1_01.jpeg" width="450px" height="300px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br/>
+<img src="../img/DAY1/DAY1_01.jpeg" width="450px" height="300px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br/>
