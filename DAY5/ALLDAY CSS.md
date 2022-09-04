@@ -246,7 +246,9 @@ div {
 ### 5. 구조화(HTML)한 후 의도하고자 하는 레이아웃 완성(CSS)
 
 - `text-align`: block 요소 내의 가로 정렬을 설정한다.
-- inline 요소: text/ image 등, base line 위에 배치된다.
+- inline 요소: text/ image 등, base line 위에 배치된다.  
+  <a href="https://www.w3.org/TR/css-inline-3/"><img src="../img/DAY5/DAY5_08.svg" width="400px" title="DAY5_04" alt="inline 요소의 baseline"></img></a>
+
 - inline 요소는 **부모 요소(블록 요소)가 설정한** `text-align`에 영향을 받는다.
 - `h1, p`에 배경색을 넣어 레이아웃을 살펴보자.
 
@@ -308,19 +310,21 @@ img {
 }
 ```
 
-- Descendant Selector
+- Descendant Selector (자손 결합자)
 
 ```css
-/* descendant combinator는 .header와 img 사이의 한칸을 의미한다. */
+/* descendant combinator는 .header와 img 사이의 공백 한칸을 의미한다. */
 .header img {
   border-radius: 50%;
   border: 5px solid #fff;
 }
 ```
 
-- child selector
+- Child Selector (자식 결합자)  
+  Descendant Selector보다 더 엄격한 결합자이다. 뒤에 오는 선택자의 요소가 앞의 선택자 요소 **바로 아래**에 위치해야 한다.
 
 ```css
+/* child combinator는 .header와 img 사이의 >을 의미한다. */
 .header > img {
   border-radius: 50%;
   border: 5px solid #fff;
