@@ -150,3 +150,51 @@ align-items: center;
   <img src="../img/DAY12/DAY12_03.png" width="500px"  title="DAY12_03" alt="flex grow 적용 결과"></img>
 
 ❗️ 따라서 flex-basis가 적용된 flex 아이템의 크기를 flex-grow로 flex 컨테이너의 여백을 가져와 크게 만들 수 있다.
+
+<br>
+
+### flex-shrink
+
+- `flex-grow` 와 반대되는 개념이다.
+- flex 아이템의 크기가 지정된 `flex-basis`값에서 얼마나 더 줄어들어도 되는지를 지정한다. 따라서 크기를 고정하거나 줄일 수 있다.
+- 기본값은 1이다. 0을 적용하면 컨테이너의 크기가 줄어도 flex-basis로 설정한 넓이보다 작아지지 않는다.
+
+<br>
+
+### flex
+
+- `flex` 속성을 사용하여 `flex-grow, flex-shrink, flex-basis` 속성의 값을 축약할 수 있다.
+
+```css
+flex: 2 300px; /* flex-grow:2; flex-shrink:1; flex-basis:300px; */
+flex: 1 1 300px; /* flex-grow:1; flex-shrink:1; flex-basis:300px; */
+flex: 1 0 100px; /* 너비는 100px보다 작아지지 않고, flex 컨테이너의 가용 공간을 동일한 크기로 할당받아 flex 아이템의 너비가 유동적으로 늘어난다 */
+```
+
+<br>
+
+### align-self
+
+- 부모의 align-items 속성을 덮어쓰고, 특정 flex 아이템에 개별적인 align-items 속성을 부여할 수 있다.
+- 기본값: stretch
+
+<br>
+
+### order
+
+- flex 아이템들이 보여지는 순서를 결정한다.
+
+### order의 값은 순서가 아니다.
+
+- 숫자는 크기에 따라서만 정렬된다. 숫자의 값이 크면 뒤로 간다. **순서가 아니다.**
+
+### order는 언제 쓸까?
+
+- 스크린 리더는 순서대로 읽어야 하지만 화면에 보여지는 것을 앞이나 뒤로 빼야할 때 (웹 접근성 측면)
+
+[Ordering flex items - CSS: Cascading Style Sheets | MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Ordering_Flex_Items#use_cases_for_order)
+
+<img src="../img/DAY14/DAY14_01.png" width="400px"  title="DAY14_01" alt="order 속성 사용 예제"></img>
+
+- 스크린 리더에서는 제목, 날짜, 내용으로 읽어야 한다. 하지만 order 속성으로 위로 올려준것.
+- 순수 Js로 검색 기능 만들었을 때(서버에서 가져오는 게 x), 서버와 통신하지 않고 가져와서 마크업 상에서 순위를 변경해줘야 할 때
