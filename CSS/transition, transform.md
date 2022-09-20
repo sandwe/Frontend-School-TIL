@@ -67,6 +67,7 @@
 ### rotate() 함수
 
 - 회전을 시킬 수 있다.
+- 기본적으로 **z축**을 기준으로 회전한다.
 - 괄호 안에 들어가는 값은 각도이고, 입력값만큼 회전을 한다. 단위는 deg(degree)이다.
 
 ```css
@@ -88,6 +89,28 @@
   transform: translate(100px, 100px);
 }
 ```
+
+#### translate()를 사용해 중앙 정렬하기
+
+- 명시하지 않은 요소의 넓이와 높이를 알아서 계산하여 이동시켜 정렬하는 방법이다.
+
+```CSS
+.box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+```
+
+<br>
+
+### translate3d() 함수
+
+- `translate3d(x축, y축, z축)`
+- `translate(x축, y축)`과 다르게 z축까지 설정이 가능하다.
+- **3D 환경을 랜더링 하는 성능**이 기존의 `translate` 속성보다 뛰어나다.
+  > 참고로 scale, rotate 속성 역시 scale3d, rotate3d 가 존재한다.
 
 <br>
 

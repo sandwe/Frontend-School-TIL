@@ -53,10 +53,32 @@
 
 <br>
 
-### 인라인 요소에 float 속성을 적용하면?
+### 인라인 요소에 float 속성을 적용하면 어떻게 될까?
 
-- <span>과 같은 인라인 요소에 float 속성을 적용하면 display 속성값이 자동으로 block으로 바뀐다.
-- 정렬도 해야하고, block 요소로 바꿔야 한다면 효율적일 것이다.
+- 인라인 요소에 float 속성을 적용하면 display 속성값이 자동으로 block으로 바뀐다.  
+  예를 들어, 아래와 같은 img 태그와 a 태그가 있을 때, img와 a 태그는 모두 인라인 요소이므로 baseline을 기준으로 각각 위치해 있다.
+
+```HTML
+<div class="join">
+  <img src="./images/icon-user.png" alt="" class="img-join" />
+  <a href="" class="link-join">회원가입</a>
+</div>
+```
+
+<img src="../img/DAY15/DAY15_01.png" width="100px"  title="DAY15_01" alt="인라인 요소"></img>
+
+이때, join 클래스명을 갖는 div 요소의 모든 자식 요소에 float 속성을 적용하면 자식 요소들은 `display: block` 으로 변환된다.
+
+```CSS
+.cont-login .join * {
+  float: left;
+}
+```
+
+<img src="../img/DAY15/DAY15_02.png" width="100px"  title="DAY15_02" alt="인라인 요소에 float 적용"></img>  
+더 이상 img와 a 태그는 인라인 요소의 성질을 갖지 않아 베이스라인을 기준으로 배치되지 않고 정렬되는 모습을 확인할 수 있다.
+
+> 📓 정렬도 해야하고, block 요소로 바꿔도 좋다면 적용해보자!
 
 <br>
 
