@@ -195,9 +195,7 @@ ex) 읽을 필요가 있는 Heading 요소(그냥 validation을 통과시키기 
         width: 100%;
         top: 0;
         left: 0;
-        clip: rect(
-          0 500px 300px 0
-        ); /* top right bottom left, top과 left를 기준으로 right bottom으로 px을 설정해야 이미지가 나타난다. */
+        clip: rect(0 500px 300px 0); /* top right bottom left, top과 left를 기준으로 right bottom으로 px을 설정해야 이미지가 나타난다. */
       }
     </style>
   </head>
@@ -260,3 +258,142 @@ ex) 읽을 필요가 있는 Heading 요소(그냥 validation을 통과시키기 
 📓 **모바일에는 레티나 스프라이트와 일반 스프라이트를 같이 넣는다. 그 이유는 무엇일까?**
 
 - 레티나 스프라이트는 용량이 크다. 따라서 유저의 화면이 레티나인지 일반 디스플레인지를 판단한 후 레티나 디스플레이일 경우 레티나 스프라이트를, 일반 디스플레이일 경우 일반 스프라이트 이미지를 전달하도록 하기 위해서이다.
+
+<br>
+
+## 5. 반응형 이미지, 동영상
+
+### 이미지 포맷의 종류
+
+**GIF**(Graphics Interchange Format) :
+256색의 컬러만 표현 가능하기 때문에 선명하진 않지만 용량이 적게 든다. 투명은 표현 가능하지만 그 정도를 조절하는건 불가능하며, 때문에 그림자 표현도 불가능하다. 애니메이션 처리가 가능하다.
+
+**JPG/JPEG** (Joint Photographic Expert Group image):
+매우 화소가 높고, 용량도 적지만 투명처리 불가능.
+
+**PNG** (Portable Network Graphics) :
+왠만한 컬러는 모두 표현 가능하여 투명 영역을 처리 가능하지만 용량이 크다.
+
+**SVG** (Scalable Vector Graphics) :
+SVG 형식의 벡터 이미지는 손실이나 품질 저하 없이 모든 크기에서 렌더링이 가능하다.
+
+**WebP** (Web Picture Format) :
+압축률이 좋다고 소문난 JPEG 이미지에 비해 무려 용량은 70% 수준으로 낮지만 더 뛰어난 색상을 지원하는 포맷이다. 그럼에도 불구하고 PNG 처럼 투명도 표현 가능하며, GIF 처럼 애니메이션 표현도 가능한 만능 포맷이다.
+
+**AVIF** (AV1 Image File Format) : WebP 처럼 뛰어난 색상표현, 애니메이션 지원, 투명도 표현 모두 가능하며 JPEG 이미지의 50% 수준인 용량을 자랑하는 차세대 이미지 포맷이다. 아직 지원하지 않는 브라우저가 많아 주의할 필요가 있다.
+
+<br>
+
+### 이미지 반응형
+
+- `max-width`: 이미지가 가진 원본 사이즈가 `max-width`로 설정한 너비값보다 커도 설정한 넓이보다 커지지 않는다.
+
+```css
+img {
+  width: 100%;
+}
+img {
+  max-width: 100%;
+}
+img {
+  width: 900px;
+  max-width: calc(100% - 20px);
+}
+```
+
+> `width`와 `max-width`의 관계
+>
+> 화면 조절 시 max-width의 넓이가 width 보다 크다면 width의 값으로, width의 넓이가 max-width보다 크다면 max-width의 넓이로 조정된다.
+
+<br>
+
+### 반응형 백그라운드 이미지 만들기
+
+```css
+article {
+  width: 100vw;
+  height: 100vh;
+  background: url("https://cdn.ize.co.kr/news/photo/202204/51609_62035_359.jpg") left top/ 100% no-repeat;
+}
+```
+
+**백그라운드 사이즈 속성들**
+
+background-size: px —> 이미지의 크기를 고정합니다.
+
+background-size: auto —> 이미지의 종 횡비를 통해 자동으로 다른 축의 크기를 결정합니다.
+
+background-size: % —> %를 사용하면 컨테이너의 넓이에 비례하도록 사이즈를 조절할 수 있습니다.
+
+background-size: contain —> 컨테이너 전체를 덮지만 이미지를 자르지 않게 유지합니다.
+
+background-size: cover —> 컨테이너 전체를 완전히 덮습니다.
+
+> 📓 언제 contain을 혹은 cover를 사용하면 좋을까?
+>
+> - contain: 배경이 투명한 이미지를 반응형으로 만들 때
+
+<br>
+
+### 반응형 동영상
+
+#### 1. 비디오 태그로 만들기
+
+```css
+<video src="../images/video/nextlevel.mp4" controls></video>
+```
+
+#### 2. iframe 태그로 만들기
+
+**브라우저가 지원하는 비디오 포멧**
+
+[https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Containers](https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Containers)
+
+<br>
+
+**video 속성**
+
+`preload =“none”, “auto”;` : 페이지를 로드할때 영상을 미리 로드할지 말지 결정합니다.
+
+`poster` : 비디오를 내려받을 동안 혹은 영상을 재생할때까지 표시할 이미지를 지정합니다.
+
+`controls` : 브라우저가 재생에 핋요한 컨트롤러를 제공할지 지정합니다.
+
+`autoplay`:  파일이 다운로드가 완료되면 자동으로 재생될지 지정하는 속성입니다.
+
+`muted`: 소리를 끕니다.
+
+`loop` : 비디오가 끝나고 반복적으로 재생할지 지정합니다.
+
+<br>
+
+**youtube 비디오 가져와 반응형 동영상 만들기**
+
+1. `width: 100%, height: auto`를 적용해보면 잘 되지 않는다. 때문에 아래와 같은 방법을 사용하는게 좋다.
+
+```html
+<article class="cont-video">
+  <iframe class="video-next-level" src="https://www.youtube.com/embed/4TWR90KJl84?autoplay=1&mute=1&loop=1&playlist=4TWR90KJl84&controls=1" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+</article>
+```
+
+- 부모의 height값이 설정되지 않았을 때에도 padding-top을 설정하기 위해서 너비에 비례하는 값을 사용한다.
+- `padding-top`, `padding-bottom` 속성의 **%값**은 부모 요소의 넓이에 비례합니다.
+- ex) 부모의 넓이 1200px -> `padding-top: 50%` 의 값 = 600px
+- 종횡비 구하는 법 : (영상 원본 사이즈의 세로) / (영상 원본 사이즈의 가로) \* 100
+
+```css
+.cont-video {
+  position: relative;
+  padding-top: 56.25%;
+  /* height: 56.26vw; 도 동일하다 */
+}
+
+.video-next-level {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+```
