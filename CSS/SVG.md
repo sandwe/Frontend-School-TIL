@@ -73,3 +73,12 @@ svg 파일의 코드를 그대로 html 코드 안에서 사용한다.
 ```html
 <object data="./image.svg" type="image/svg+xml"></object>
 ```
+
+<br>
+
+### 참고 사이트
+
+- svg 이미지 최적화  
+  https://jakearchibald.github.io/svgomg/
+- png -> svg 변환  
+  https://convertio.co/kr/png-svg/
