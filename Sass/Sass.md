@@ -923,3 +923,39 @@ $url: "./assets/img/";
   @include circle(100px, red);
 }
 ```
+
+<br>
+
+### 문자열 처리 예제
+
+```SCSS
+// @function sigma($number){
+//     $result: 0;
+
+//     @for $i from 1 to $number {
+//         $result: #{$result + $i}; // 문자열로 처리(#이 들어간 공간을 통째로 문자열로 처리)
+//     }
+
+//     @return $result;
+// }
+
+// .one {
+//     width: sigma(11) + px;
+//     // width: 12345678910px;
+// }
+
+@function sigma($number){
+    $result: 0;
+
+    @for $i from 1 to $number {
+        $result: #{$result} + $i;
+    }
+
+    @return $result;
+}
+
+.one {
+    width: sigma(11) + px;
+    // width: 012345678910px;
+}
+```

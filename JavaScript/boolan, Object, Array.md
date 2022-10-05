@@ -222,7 +222,7 @@ console.log(newUser2);
 
 ```jsx
 let 과일 = ["사과", "수박", "복숭아", "딸기", "바나나"];
-let 과일 = new Array(5);
+let 과일 = new Array(5); // 인자가 1개이면 배열의 길이를 의미한다.
 let 과일 = new Array("사과", "수박", "복숭아", "딸기", "바나나");
 ```
 
@@ -253,11 +253,18 @@ console.log(data3); // ['사과', '수박', '복숭아', '딸기', '바나나']
 
 <br>
 
+### 배열에 존재하지 않는 곳에 접근하면?
+
+`[1, 2, 3, 4][5]`와 같이 배열의 인덱스 범위를 벗어난 곳에 접근하면 에러가 나지 않고 `undefined`가 반환된다. 이는 다른 언어와는 다른 자바스크립트의 유연한 특징이다.
+
+<br>
+
 ### Array 메서드
 
 **`splice()`**
 
 - 배열의 기존 요소를 삭제 또는 교체하거나 새 요소를 추가하여 배열의 내용을 변경한다.
+- `배열.splice(요소를 위치시키려는 인덱스, 제거할 요소의 개수, 배열에 추가할 요소)`
 
 ```JavaScript
 // 아이템 삭제
@@ -273,4 +280,130 @@ console.log(data3); // ['사과', '수박', '복숭아', '제주감귤']
 
 data3.splice(3, 0, ["포도", "체리"]);
 console.log(data3);
+```
+
+**`unshift()`**
+
+- 새로운 요소를 배열의 맨 앞쪽에 추가하고, **새로운 길이를 반환**한다.
+
+```JavaScript
+const cafe = ['coffee', 'cake', 'tea', 'cookie']
+const count = cafe.unshift('bread');
+
+count // expected output: 5
+cafe // expected output: ['bread', 'coffee', 'cake', 'tea', 'cookie']
+```
+
+**`shift()`**
+
+- 배열의 첫 번째 요소를 제거하고, **제거된 요소를 반환**한다.
+
+```JavaScript
+const cafe = ['coffee', 'cake', 'tea', 'cookie']
+const firstElement = cafe.shift();
+
+firstElement // expected output: 'coffee'
+cafe // expected output: ['cake', 'tea', 'cookie']
+```
+
+**`join()`**
+
+- 배열의 모든 요소를 연결해 하나의 문자열을 만든다.
+- 배열을 다시 문자열로 만들고 싶을때는 `String.prototype.split()`을 사용한다.
+
+```JavaScript
+const cafe = ['coffee', 'cake', 'tea', 'cookie']
+cafe.join('/') // 'coffee/cake/tea/cookie'
+cafe.join('') // 'coffeecaketeacookie'
+cafe.join('/').split("/"); //  ['coffee', 'cake', 'tea', 'cookie']
+
+// null이나 undefined 값은 무시된다.
+const example = ['coffee', null, undefined, 'cake']
+example.join('') // 'coffeecake'
+```
+
+**`includes()`**
+
+- 배열에 특정값이 포함되어 있는지를 판별한다.
+- 두번째 매개변수로 **탐색을 시작하고자 하는 인덱스**를 입력할 수 있다.
+
+```JavaScript
+const cafe = ['coffee', 'cake', 'tea', 'cookie']
+
+cafe.includes('bread'); // false
+
+cafe.includes('cake'); // true
+
+cafe.includes('cake', -3); // true
+```
+
+**`find()`**
+
+- 판별 함수를 만족하는 첫 번째 요소의 값을 반환한다. (만족하는 값 1개만 반환)
+- 만족하는 요소가 없다면 `undefined` 반환
+
+```JavaScript
+const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+arr.find(i => i > 5); // 6
+```
+
+**`filter()`**
+
+- 주어진 함수를 만족하는 모든 요소를 모아 새로운 배열로 반환한다.
+
+```JavaScript
+const words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
+
+const result = words.filter(word => word.length > 6);
+
+console.log(result); // ["exuberant", "destruction", "present"]
+```
+
+**`map()`**
+
+- 배열 내의 모든 요소에 함수를 호출해 그 결과를 새로운 배열로 반환한다.
+
+```JavaScript
+const arr = [{
+    'name' : 'title1',
+    'contents' : 'contents1',
+    'dataNum' : 1,
+    'data' : [1, 2, 3]
+}, {
+    'name' : 'title2',
+    'contents' : 'contents2',
+    'dataNum' : 2,
+    'data' : [1, 2, 3]
+}, {
+    'name' : 'title3',
+    'contents' : 'contents3',
+    'dataNum' : 3,
+    'data' : [1, 2, 100]
+}];
+
+
+arr.map(i => i.name); // ['title1', 'title2', 'title3']
+```
+
+`**sort()**`
+
+- 배열 내 요소를 정렬할 때 사용한다.
+- 기본 정렬 순서는 **문자열의 유니코드 코드 포인트**를 따른다.
+- 따라서, 숫자를 정렬하기 위해서는 `compareFunction` 을 사용해야 한다.
+
+```JavaScript
+const arrNum = [13, 9, 10, 2];
+
+arrNum.sort(function (a, b) {
+  // if (a < b) {
+  //   return -1;
+  // } else if (b < a) {
+  //   return 1;
+  // } else {
+  //   return 0;
+  // }
+
+  return a - b;
+}); // 결과: [2, 9, 10, 13]
 ```
