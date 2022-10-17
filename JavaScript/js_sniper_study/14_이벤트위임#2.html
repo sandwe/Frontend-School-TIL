@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+  </head>
+  <body>
+    <div class="parent">
+      <!-- 요소를 생성하는 버튼 1개 -->
+      <button type="button">generate item</button>
+      <ul>
+        <li>initial item</li>
+      </ul>
+    </div>
+    <script>
+      const parent = document.querySelector(".parent");
+      // 부모 요소 div에 이벤트 리스너를 등록한다.
+      parent.addEventListener("click", function (event) {
+        // 버튼을 클릭했을 때 hello world 리스트가 추가되도록 한다.
+        // 이벤트를 최초 발행한 요소는 버튼이 되므로 조건문 처리
+        if (event.target.tagName.toLowerCase() === "button") {
+          const item = document.createElement("li");
+          item.innerText = "hello world";
+          parent.querySelector("ul").appendChild(item);
+        }
+        // hello world라는 리스트 클릭 시 hit가 콘솔에 출력되도록 한다.
+        if (event.target.tagName.toLowerCase() === "li") {
+          console.log("hit!!!");
+        }
+      });
+    </script>
+  </body>
+</html>

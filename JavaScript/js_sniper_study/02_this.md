@@ -26,6 +26,51 @@
   yourDinner.menu(); // 오늘 저녁은 된장찌개
   ```
 
+- 화살표 함수의 경우 this는 상위 스코프를 따른다.
+
+```JavaScript
+// a에서 this = person
+// b에서 this = 상위스코프(상위에서 person을 보고있음) 즉 person
+// c에서 this = 상위스코프(상위에서 person을 보고있음) 즉 person
+const person = {
+    name: 'hojun',
+    age: 25,
+    a(){
+        console.log(this);
+        console.log(this.name);
+        let b = () => {
+            console.log(this);
+            console.log(this.name);
+            let c = () => {
+                console.log(this);
+                console.log(this.name);
+            }
+            c()
+        }
+        b()
+    }
+}
+person.a()
+
+//출력
+{name: 'hojun', age: 25, a: ƒ}
+hojun
+
+{name: 'hojun', age: 25, a: ƒ}
+hojun
+
+{name: 'hojun', age: 25, a: ƒ}
+hojun
+```
+
+- 콜백함수의 this가 전역을 바라보고 있지 않은 경우도 있다.
+
+- `forEach()`메서드 에서는 콜백함수 실행 시 this로 사용할 값을 지정할 수 있다.
+
+```JavaScript
+[1, 2, 3].forEach(function(){console.log(this)}, [10, 20, 30])
+```
+
 <br>
 
 ## this 제어하는 함수
