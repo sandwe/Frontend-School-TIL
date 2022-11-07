@@ -62,7 +62,7 @@
 
 <img src="../img/HTTP/02.png" width="500px"  title="4layer" alt="TCP/IP 4계층"></img>
 
-<img src="../img/HTTP/03.png" width="500px"  title="4layer" alt="TCP/IP 4계층"></img>
+<img src="../img/HTTP/03.png" width="600px"  title="4layer" alt="TCP/IP 4계층"></img>
 
 <br>
 
@@ -131,8 +131,7 @@
   - 0번 ~ 1023번: 잘 알려진 포트 (well-known port)
   - 1024번 ~ 49151번: 등록된 포트 (registered port)
   - 49152번 ~ 65535번: 동적 포트 (dynamic port)
-
-![resize_URL-URN.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3e8ac760-feb5-46ac-a3d4-33e96de13ad5/resize_URL-URN.png)
+    <img src="../img/HTTP/011.png" width="500px"  title="URL/URN" alt="URL/URN"></img>
 
 <br>
 
